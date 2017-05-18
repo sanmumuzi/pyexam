@@ -1,0 +1,3 @@
+[console_scripts]
+ptail = ptail1.tailarg:ptail
+

@@ -1,0 +1,10 @@
+setup.cfg
+setup.py
+ptail.egg-info/PKG-INFO
+ptail.egg-info/SOURCES.txt
+ptail.egg-info/dependency_links.txt
+ptail.egg-info/entry_points.txt
+ptail.egg-info/top_level.txt
+ptail.egg-info/zip-safe
+ptail1/__init__.py
+ptail1/tailarg.py
