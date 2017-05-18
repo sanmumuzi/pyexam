@@ -4,7 +4,7 @@
 
 * 一个最最最基本的满是坑的匿名聊天室。。。
 
-<>
+<https://github.com/sanmumuzi/chattest>
 
 ## 2.解释一下@classmethod, @staticmethod, @property
 
@@ -33,9 +33,16 @@
 
 ## 4.实现一个终端版本的本地音乐播放器，能够播放本地指定路径的mp3文件并联网自动匹配歌词，且能够在终端中按照对应的时间线刷新歌词。
 * 并未实现联网自动匹配歌词的功能
+* re
+* time
+* sys
+* pygame
+* mutagen
 
-<>
+<https://github.com/sanmumuzi/pyexam>
 
 ## 5.请用python3实现一个类似linux平台下的tail命令的程序，暂命名为ptail，要求至少支持 -f，-n参数并尽可能的降低读取大文件时的资源消耗。
+
+* win10专业版可用
 
 <https://github.com/sanmumuzi/pyexam>
