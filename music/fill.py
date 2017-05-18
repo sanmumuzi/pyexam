@@ -3,19 +3,18 @@ import time
 import sys
 import pygame
 from mutagen.mp3 import MP3
-import math
 
 lists = []
-with open('a.lrc', 'r') as f:
+with open(sys.argv[2], 'r') as f:
     lines = f.readlines()
     for line in lines:
         temp_line = re.split(r'[]:[]', line)
         time_sum = float(temp_line[1]) * 60 + float(temp_line[2])
-        lists.append([time_sum, temp_line[3].strip('\n')])  # 必须去掉换行符，然不然就尴尬了
+        lists.append([time_sum, temp_line[3].strip('\n')])  # 必须去掉换行符，不然就尴尬了
 
 pygame.mixer.init()
-audio = MP3('a.mp3')
-pygame.mixer.music.load('a.mp3')
+audio = MP3(sys.argv[1])
+pygame.mixer.music.load(sys.argv[1])
 
 # for x in audio.info.length:
 
@@ -27,13 +26,13 @@ class ProgressBar:
 
     def log(self, now):
         progress = self.width * self.count / self.total
-        if(abs(pygame.mixer.music.get_pos()/1000 - lists[now][0]) <= 0.05):
-            sys.stdout.write(' ' * 100 + '\r')
+        if(abs(pygame.mixer.music.get_pos()/1000 - lists[now][0]) <= 0.05):  # 实现即时歌词匹配 --歌词文件和歌曲时长差不到20秒，但是最后两句被吃掉了，暂未解决
+            sys.stdout.write(' ' * 100 + '\r')                               # 0.05 是否要改
             sys.stdout.write(lists[now][1] + '\r')
             sys.stdout.flush()
             now += 1
         # sys.stdout.write(' ' * (100-len(lists[now-1][1])) + '*' * int(progress) + '-' * (self.width - int(progress) - 1) + '\r')  # 这个-1有毒
-        # 弱鸡，并没有实现歌词和进度条同时存在
+        # 弱鸡，并没有实现歌词和进度条同时存在 ----（同一行，覆盖问题，sys.stdout.write能多行吗？）
         if progress == self.width:
             sys.stdout.write('\n')
         sys.stdout.flush()
